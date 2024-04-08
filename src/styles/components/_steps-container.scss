@@ -1,0 +1,17 @@
+.steps {
+  background-color: $light-blue;
+  width: 55%;
+  height: inherit;
+  margin: 0 auto;
+
+  @include small {
+    width: 90%;
+    height: 100px;
+    position: absolute;
+    z-index: 100;
+    top: 7rem;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 0.5rem;
+  }
+}

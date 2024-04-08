@@ -1,0 +1,23 @@
+.sidebar {
+  position: relative;
+
+  .container {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    @include small {
+      flex-direction: row;
+      left: 50%;
+      top: 2.5rem;
+      transform: translateX(-50%);
+    }
+  }
+
+  img {
+    width: 100%;
+  }
+}

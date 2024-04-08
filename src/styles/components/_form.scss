@@ -1,0 +1,16 @@
+.form {
+  background-color: $white;
+  width: 70%;
+  margin: 4rem auto;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  display: flex;
+  gap: 2rem;
+
+  @include small {
+    display: block;
+    padding: 0;
+    width: 100%;
+    margin: 0;
+  }
+}
