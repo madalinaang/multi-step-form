@@ -1,10 +1,16 @@
 {
   "files": {
-    "main.js": "/multi-step-form/static/js/main.0fd7e9df.js",
+    "main.css": "/multi-step-form/static/css/main.ab19bddb.css",
+    "main.js": "/multi-step-form/static/js/main.bca9a06c.js",
+    "static/media/Ubuntu-Regular.ttf": "/multi-step-form/static/media/Ubuntu-Regular.1cbb1b79a23478cc89ad.ttf",
+    "static/media/Ubuntu-Medium.ttf": "/multi-step-form/static/media/Ubuntu-Medium.e37c5546eb1a6efc4818.ttf",
+    "static/media/Ubuntu-Bold.ttf": "/multi-step-form/static/media/Ubuntu-Bold.fec2d0f1431a6114a6ce.ttf",
     "index.html": "/multi-step-form/index.html",
-    "main.0fd7e9df.js.map": "/multi-step-form/static/js/main.0fd7e9df.js.map"
+    "main.ab19bddb.css.map": "/multi-step-form/static/css/main.ab19bddb.css.map",
+    "main.bca9a06c.js.map": "/multi-step-form/static/js/main.bca9a06c.js.map"
   },
   "entrypoints": [
-    "static/js/main.0fd7e9df.js"
+    "static/css/main.ab19bddb.css",
+    "static/js/main.bca9a06c.js"
   ]
 }
