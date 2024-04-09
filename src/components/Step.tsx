@@ -25,7 +25,7 @@ const Step: React.FC<StepProps> = ({ number, selected = false }) => {
       default:
         setName(null);
     }
-  }, [number]);
+  }, []);
 
   return (
     <article className="step">

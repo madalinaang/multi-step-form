@@ -1,17 +1,56 @@
 .steps {
-  background-color: $light-blue;
-  width: 55%;
+  width: 50%;
   height: inherit;
-  margin: 0 auto;
+  margin: 2.5rem auto 1rem auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
   @include small {
-    width: 90%;
-    height: 100px;
+    width: 100%;
     position: absolute;
     z-index: 100;
     top: 7rem;
     left: 50%;
     transform: translateX(-50%);
     border-radius: 0.5rem;
+    height: 100vh;
+    margin: 0;
+  }
+
+  nav {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: $font-weight-medium;
+
+    @include small {
+      background-color: $white;
+      padding: 1.5rem;
+    }
+
+    .next {
+      background-color: $marine-blue;
+      color: $white;
+      border-radius: 0.5rem;
+      padding: 1rem 1.5rem;
+
+      &:hover {
+        opacity: 80%;
+      }
+    }
+
+    .back {
+      color: $cool-gray;
+
+      &:hover {
+        color: $marine-blue;
+      }
+
+      &.hidden {
+        visibility: hidden;
+      }
+    }
   }
 }
