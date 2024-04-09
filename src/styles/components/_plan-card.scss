@@ -1,0 +1,55 @@
+.plan-card {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 31%;
+  border: 0.1rem solid $light-gray;
+  border-radius: 0.5rem;
+  padding: 1rem;
+
+  @include small {
+    flex-direction: row;
+    width: 100%;
+    gap: 1.2rem;
+  }
+
+  img {
+    width: 3rem;
+  }
+
+  .description {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    h5 {
+      color: $marine-blue;
+      font-weight: $font-weight-bold;
+      font-size: 110%;
+      text-transform: capitalize;
+    }
+
+    p {
+      color: $cool-gray;
+    }
+
+    .yearly {
+      display: none;
+
+      &.visible {
+        display: block;
+        color: $marine-blue;
+      }
+    }
+  }
+
+  &.selected {
+    border-color: $marine-blue;
+    background-color: $magnolia;
+  }
+
+  &:hover {
+    border-color: $marine-blue;
+    cursor: pointer;
+  }
+}

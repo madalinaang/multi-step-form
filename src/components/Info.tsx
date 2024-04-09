@@ -8,7 +8,7 @@ import React, {
 import Input from "./Input";
 import { useUserContext } from "../context/UserContext";
 
-const Info = forwardRef<{ verify: () => boolean }>((_props, ref) => {
+const Info = forwardRef<{ submit: () => boolean }>((_props, ref) => {
   const { user, updateUser } = useUserContext();
 
   const [nameValue, setNameValue] = useState<string>("");
@@ -41,7 +41,7 @@ const Info = forwardRef<{ verify: () => boolean }>((_props, ref) => {
     setPhoneValue(user.phone);
   }, [user]);
 
-  const verify = (): boolean => {
+  const submit = (): boolean => {
     const nameCheck: boolean = nameValue !== "";
     const emailCheck: boolean = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailValue);
     const phoneCheck: boolean = /^\d{10}$/.test(phoneValue);
@@ -64,7 +64,7 @@ const Info = forwardRef<{ verify: () => boolean }>((_props, ref) => {
   };
 
   useImperativeHandle(ref, () => ({
-    verify: () => verify(),
+    submit: () => submit(),
   }));
 
   return (
