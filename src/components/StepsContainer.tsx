@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import Info from "./Info";
 import { StepNumber } from "./Form";
+import { UserProvider } from "../context/UserContext";
 
 interface StepsContainerProps {
   currentStep: StepNumber;
@@ -16,28 +17,31 @@ const StepsContainer: React.FC<StepsContainerProps> = ({
   const step1Ref = useRef<{ verify: () => boolean }>(null);
 
   const handleClickNext = (e: React.MouseEvent<HTMLButtonElement>): void => {
-    if (step1Ref.current?.verify()) increaseStep();
+    if (currentStep === 1 && step1Ref.current?.verify()) increaseStep();
+    else increaseStep();
   };
 
   const handleClickBack = (e: React.MouseEvent<HTMLButtonElement>): void => {
-    if (step1Ref.current?.verify()) decreaseStep();
+    decreaseStep();
   };
 
   return (
-    <section className="steps">
-      <Info ref={step1Ref} />
-      <nav>
-        <button
-          className={"back " + (currentStep === 1 && "hidden")}
-          onClick={handleClickBack}
-        >
-          Go Back
-        </button>
-        <button className="next" onClick={handleClickNext}>
-          Next Step
-        </button>
-      </nav>
-    </section>
+    <UserProvider>
+      <section className="steps">
+        {currentStep === 1 && <Info ref={step1Ref} />}
+        <nav>
+          <button
+            className={"back " + (currentStep === 1 && "hidden")}
+            onClick={handleClickBack}
+          >
+            Go Back
+          </button>
+          <button className="next" onClick={handleClickNext}>
+            Next Step
+          </button>
+        </nav>
+      </section>
+    </UserProvider>
   );
 };
 

@@ -6,8 +6,11 @@ import React, {
   useImperativeHandle,
 } from "react";
 import Input from "./Input";
+import { useUserContext } from "../context/UserContext";
 
 const Info = forwardRef<{ verify: () => boolean }>((_props, ref) => {
+  const { user, updateUser } = useUserContext();
+
   const [nameValue, setNameValue] = useState<string>("");
   const [nameInvalid, setNameInvalid] = useState<boolean>(false);
 
@@ -32,6 +35,12 @@ const Info = forwardRef<{ verify: () => boolean }>((_props, ref) => {
     setPhoneInvalid(false);
   };
 
+  useEffect(() => {
+    setNameValue(user.name);
+    setEmailValue(user.email);
+    setPhoneValue(user.phone);
+  }, [user]);
+
   const verify = (): boolean => {
     const nameCheck: boolean = nameValue !== "";
     const emailCheck: boolean = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailValue);
@@ -41,7 +50,17 @@ const Info = forwardRef<{ verify: () => boolean }>((_props, ref) => {
     setEmailInvalid(!emailCheck);
     setPhoneInvalid(!phoneCheck);
 
-    return nameCheck && emailCheck && phoneCheck;
+    const valid = nameCheck && emailCheck && phoneCheck;
+
+    if (valid)
+      updateUser({
+        ...user,
+        name: nameValue,
+        email: emailValue,
+        phone: phoneValue,
+      });
+
+    return valid;
   };
 
   useImperativeHandle(ref, () => ({
