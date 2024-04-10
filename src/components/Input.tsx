@@ -41,9 +41,7 @@ const Input: React.FC<InputProps> = ({
     <div className="input">
       <div>
         <label className="label">{label}</label>
-        {invalid && (
-          <label className="error">Invalid format for this field.</label>
-        )}
+        {invalid && <label className="error">Invalid format.</label>}
         {required && <label className="error">This field is required.</label>}
       </div>
       <input

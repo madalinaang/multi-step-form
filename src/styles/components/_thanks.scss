@@ -1,0 +1,26 @@
+.thanks {
+  @include step-page;
+  align-items: center;
+  margin: auto;
+
+  @include small {
+    padding: 6rem 1.5rem;
+  }
+
+  img {
+    width: 5rem;
+
+    @include small {
+      width: 4rem;
+    }
+  }
+
+  .content {
+    @include header;
+    text-align: center;
+
+    p {
+      line-height: 150%;
+    }
+  }
+}

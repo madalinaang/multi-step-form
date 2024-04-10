@@ -3,6 +3,7 @@ import Info from "./Info";
 import Plan from "./Plan";
 import Addons from "./Addons";
 import Summary from "./Summary";
+import Thanks from "./Thanks";
 import { StepNumber } from "./Form";
 import { UserProvider } from "../context/UserContext";
 
@@ -40,6 +41,8 @@ const StepsContainer: React.FC<StepsContainerProps> = ({
     } else if (currentStep === 3) {
       step3Ref.current?.submit();
       increaseStep();
+    } else if (currentStep === 4) {
+      increaseStep();
     }
   };
 
@@ -54,20 +57,23 @@ const StepsContainer: React.FC<StepsContainerProps> = ({
         {currentStep === 2 && <Plan ref={step2Ref} />}
         {currentStep === 3 && <Addons ref={step3Ref} />}
         {currentStep === 4 && <Summary change={changeStep} />}
-        <nav>
-          <button
-            className={"back " + (currentStep === 1 && "hidden")}
-            onClick={handleClickBack}
-          >
-            Go Back
-          </button>
-          <button
-            className={"next " + (currentStep === 4 && "confirm")}
-            onClick={handleClickNext}
-          >
-            {currentStep === 4 ? "Confirm" : "Next Step"}
-          </button>
-        </nav>
+        {currentStep === 5 && <Thanks />}
+        {currentStep !== 5 && (
+          <nav>
+            <button
+              className={"back " + (currentStep === 1 && "hidden")}
+              onClick={handleClickBack}
+            >
+              Go Back
+            </button>
+            <button
+              className={"next " + (currentStep === 4 && "confirm")}
+              onClick={handleClickNext}
+            >
+              {currentStep === 4 ? "Confirm" : "Next Step"}
+            </button>
+          </nav>
+        )}
       </section>
     </UserProvider>
   );
