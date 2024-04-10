@@ -34,10 +34,16 @@
       background-color: $marine-blue;
       color: $white;
       border-radius: 0.5rem;
-      padding: 0.85rem 1.5rem;
+      padding: 0.85rem 0;
+      width: 7rem;
+      text-align: center;
 
       &:hover {
         opacity: 80%;
+      }
+
+      &.confirm {
+        background-color: $purplish-blue;
       }
     }
 

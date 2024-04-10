@@ -94,6 +94,7 @@
     background-color: $white;
     border: 0.1rem solid $light-gray;
     cursor: pointer;
+    transition: 0.2s;
 
     img {
       display: none;
@@ -104,6 +105,7 @@
   input:checked + label {
     background-color: $purplish-blue;
     border: none;
+    transition: 0.3s;
 
     img {
       display: block;

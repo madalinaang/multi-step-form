@@ -35,6 +35,7 @@ const AddonCard: React.FC<AddonCardProps> = ({
   }, [type]);
 
   const handleClick = (): void => {
+    console.log("aici");
     setSelected(!selected);
   };
 
@@ -48,7 +49,7 @@ const AddonCard: React.FC<AddonCardProps> = ({
           type="checkbox"
           id="custom-checkbox"
           checked={selected}
-          onChange={handleClick}
+          disabled
         />
         <label htmlFor="custom-checkbox">
           <img src={process.env.PUBLIC_URL + "/images/tabler_check.svg"} />

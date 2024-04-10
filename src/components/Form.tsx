@@ -7,18 +7,22 @@ export type StepNumber = 1 | 2 | 3 | 4 | 5;
 const Form: React.FC = () => {
   const [currentStep, setCurrentStep] = useState<StepNumber>(1);
 
-  const increaseStep = () => {
+  const increaseStep = (): void => {
     setCurrentStep(
       (prevStep: StepNumber): StepNumber =>
         prevStep < 5 ? ((prevStep + 1) as StepNumber) : prevStep
     );
   };
 
-  const decreaseStep = () => {
+  const decreaseStep = (): void => {
     setCurrentStep(
       (prevStep: StepNumber): StepNumber =>
         prevStep > 1 ? ((prevStep - 1) as StepNumber) : prevStep
     );
+  };
+
+  const changeStep = (): void => {
+    setCurrentStep(2);
   };
 
   return (
@@ -28,6 +32,7 @@ const Form: React.FC = () => {
         currentStep={currentStep}
         increaseStep={increaseStep}
         decreaseStep={decreaseStep}
+        changeStep={changeStep}
       />
     </main>
   );

@@ -4,14 +4,18 @@ interface InputProps {
   type: "name" | "email" | "phone";
   value?: string;
   handleChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+  handleBlur?: () => void;
   invalid?: boolean;
+  required?: boolean;
 }
 
 const Input: React.FC<InputProps> = ({
   type,
   value,
   handleChange,
+  handleBlur,
   invalid,
+  required,
 }) => {
   const [label, setLabel] = useState<string>("");
   const [placeholder, setPlaceholder] = useState<string>("");
@@ -37,13 +41,17 @@ const Input: React.FC<InputProps> = ({
     <div className="input">
       <div>
         <label className="label">{label}</label>
-        {invalid && <label className="required">This field is required.</label>}
+        {invalid && (
+          <label className="error">Invalid format for this field.</label>
+        )}
+        {required && <label className="error">This field is required.</label>}
       </div>
       <input
         type="text"
         placeholder={placeholder}
         value={value}
         onChange={handleChange}
+        onBlur={handleBlur}
         className={invalid && "invalid"}
       />
     </div>

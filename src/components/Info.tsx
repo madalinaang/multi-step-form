@@ -12,27 +12,39 @@ const Info = forwardRef<{ submit: () => boolean }>((_props, ref) => {
   const { user, updateUser } = useUserContext();
 
   const [nameValue, setNameValue] = useState<string>("");
-  const [nameInvalid, setNameInvalid] = useState<boolean>(false);
+  const [nameRequired, setNameRequired] = useState<boolean>(false);
 
   const handleChangeName = (e: ChangeEvent<HTMLInputElement>): void => {
     setNameValue(e.target.value);
-    setNameInvalid(false);
+    setNameRequired(false);
   };
 
   const [emailValue, setEmailValue] = useState<string>("");
   const [emailInvalid, setEmailInvalid] = useState<boolean>(false);
+  const [emailRequired, setEmailRequired] = useState<boolean>(false);
 
   const handleChangeEmail = (e: ChangeEvent<HTMLInputElement>): void => {
     setEmailValue(e.target.value);
     setEmailInvalid(false);
+    setEmailRequired(false);
+  };
+
+  const verifyEmail = (): void => {
+    setEmailInvalid(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailValue));
   };
 
   const [phoneValue, setPhoneValue] = useState<string>("");
   const [phoneInvalid, setPhoneInvalid] = useState<boolean>(false);
+  const [phoneRequired, setPhoneRequired] = useState<boolean>(false);
 
   const handleChangePhone = (e: ChangeEvent<HTMLInputElement>): void => {
     setPhoneValue(e.target.value);
     setPhoneInvalid(false);
+    setPhoneRequired(false);
+  };
+
+  const verifyPhone = (): void => {
+    setPhoneInvalid(!/^\d{10}$/.test(phoneValue));
   };
 
   useEffect(() => {
@@ -42,15 +54,16 @@ const Info = forwardRef<{ submit: () => boolean }>((_props, ref) => {
   }, [user]);
 
   const submit = (): boolean => {
-    const nameCheck: boolean = nameValue !== "";
-    const emailCheck: boolean = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailValue);
-    const phoneCheck: boolean = /^\d{10}$/.test(phoneValue);
+    const reqName = nameValue === "";
+    const reqEmail = emailValue === "";
+    const reqPhone = phoneValue === "";
 
-    setNameInvalid(!nameCheck);
-    setEmailInvalid(!emailCheck);
-    setPhoneInvalid(!phoneCheck);
+    setNameRequired(reqName);
+    setEmailRequired(reqEmail);
+    setPhoneRequired(reqPhone);
 
-    const valid = nameCheck && emailCheck && phoneCheck;
+    const valid =
+      !reqName && !emailInvalid && !reqEmail && !phoneInvalid && !reqPhone;
 
     if (valid)
       updateUser({
@@ -78,19 +91,23 @@ const Info = forwardRef<{ submit: () => boolean }>((_props, ref) => {
           type="name"
           value={nameValue}
           handleChange={handleChangeName}
-          invalid={nameInvalid}
+          required={nameRequired}
         />
         <Input
           type="email"
           value={emailValue}
           handleChange={handleChangeEmail}
+          handleBlur={verifyEmail}
           invalid={emailInvalid}
+          required={emailRequired}
         />
         <Input
           type="phone"
           value={phoneValue}
           handleChange={handleChangePhone}
+          handleBlur={verifyPhone}
           invalid={phoneInvalid}
+          required={phoneRequired}
         />
       </div>
     </section>

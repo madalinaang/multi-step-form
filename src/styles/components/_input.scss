@@ -15,7 +15,7 @@
       color: $marine-blue;
     }
 
-    .required {
+    .error {
       font-weight: $font-weight-bold;
       color: $strawberry-red;
     }
@@ -40,7 +40,7 @@
       cursor: pointer;
     }
 
-    &.invalid {
+    &.error {
       border-color: $strawberry-red;
     }
   }

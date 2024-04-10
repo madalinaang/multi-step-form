@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import Info from "./Info";
 import Plan from "./Plan";
 import Addons from "./Addons";
+import Summary from "./Summary";
 import { StepNumber } from "./Form";
 import { UserProvider } from "../context/UserContext";
 
@@ -9,6 +10,7 @@ interface StepsContainerProps {
   currentStep: StepNumber;
   increaseStep: () => void;
   decreaseStep: () => void;
+  changeStep: () => void;
 }
 
 interface RefBool {
@@ -23,6 +25,7 @@ const StepsContainer: React.FC<StepsContainerProps> = ({
   currentStep,
   increaseStep,
   decreaseStep,
+  changeStep,
 }) => {
   const step1Ref = useRef<RefBool>(null);
   const step2Ref = useRef<RefVoid>(null);
@@ -50,6 +53,7 @@ const StepsContainer: React.FC<StepsContainerProps> = ({
         {currentStep === 1 && <Info ref={step1Ref} />}
         {currentStep === 2 && <Plan ref={step2Ref} />}
         {currentStep === 3 && <Addons ref={step3Ref} />}
+        {currentStep === 4 && <Summary change={changeStep} />}
         <nav>
           <button
             className={"back " + (currentStep === 1 && "hidden")}
@@ -57,8 +61,11 @@ const StepsContainer: React.FC<StepsContainerProps> = ({
           >
             Go Back
           </button>
-          <button className="next" onClick={handleClickNext}>
-            Next Step
+          <button
+            className={"next " + (currentStep === 4 && "confirm")}
+            onClick={handleClickNext}
+          >
+            {currentStep === 4 ? "Confirm" : "Next Step"}
           </button>
         </nav>
       </section>

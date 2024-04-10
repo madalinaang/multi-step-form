@@ -49,6 +49,7 @@
   &.selected {
     border-color: $medium-blue;
     background-color: $magnolia;
+    transition: 0.4s;
   }
 
   &:hover {

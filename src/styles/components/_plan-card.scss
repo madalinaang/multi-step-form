@@ -46,6 +46,7 @@
   &.selected {
     border-color: $medium-blue;
     background-color: $magnolia;
+    transition: 0.2s;
   }
 
   &:hover {
