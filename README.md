@@ -2,6 +2,10 @@ https://madalinaang.github.io/multi-step-form/
 
 ### The challenge - https://www.frontendmentor.io/challenges/multistep-form-YVAnSdqQBJ
 
+Your challenge is to build out this multi-step form and get it looking as close to the design as possible.
+
+You can use any tools you like to help you complete the challenge. So if you've got something you'd like to practice, feel free to give it a go.
+
 Users should be able to:
 
 - Complete each step of the sequence
