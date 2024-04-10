@@ -7,14 +7,14 @@
 @mixin step-page {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 2rem;
 
   @include small {
     background-color: $white;
     border-radius: 0.5rem;
-    width: 90%;
+    width: 92%;
     margin: 0 auto;
-    padding: 3rem 2rem;
+    padding: 3rem 1.5rem;
   }
 }
 
@@ -76,5 +76,37 @@
 
   input:checked + .slider:before {
     transform: translate(1.7rem, -50%);
+  }
+}
+
+@mixin checkbox {
+  input {
+    display: none;
+  }
+
+  label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 0.25rem;
+    background-color: $white;
+    border: 0.1rem solid $light-gray;
+    cursor: pointer;
+
+    img {
+      display: none;
+      width: 80%;
+    }
+  }
+
+  input:checked + label {
+    background-color: $purplish-blue;
+    border: none;
+
+    img {
+      display: block;
+    }
   }
 }

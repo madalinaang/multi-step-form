@@ -1,46 +1,49 @@
-.plan-card {
+.addon-card {
   display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  width: 31%;
+  align-items: center;
+  gap: 1.5rem;
+  width: 100%;
   border: 0.1rem solid $light-gray;
   border-radius: 0.5rem;
-  padding: 1rem;
+  padding: 1rem 1.5rem;
 
   @include small {
-    flex-direction: row;
-    width: 100%;
-    gap: 1.2rem;
+    gap: 1rem;
+    padding: 1rem;
   }
 
-  img {
-    width: 3rem;
+  .checkbox {
+    @include checkbox;
   }
 
   .description {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    flex: 1;
 
     h5 {
       color: $marine-blue;
       font-weight: $font-weight-bold;
       font-size: 110%;
       text-transform: capitalize;
+
+      @include small {
+        font-size: 100%;
+      }
     }
 
     p {
       color: $cool-gray;
-    }
 
-    .yearly {
-      display: none;
-
-      &.visible {
-        display: block;
-        color: $medium-blue;
+      @include small {
+        font-size: 90%;
       }
     }
+  }
+
+  .price {
+    color: $medium-blue;
   }
 
   &.selected {

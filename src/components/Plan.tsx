@@ -27,7 +27,6 @@ const Plan = forwardRef<{ submit: () => void }>((_props, ref) => {
   }, [user]);
 
   const submit = (): void => {
-    console.log("aici");
     updateUser({ ...user, planType: selectedPlan, yearly: yearly });
   };
 

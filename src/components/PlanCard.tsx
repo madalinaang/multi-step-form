@@ -18,7 +18,7 @@ const PlanCard: React.FC<PlanProps> = ({ type, yearly, selected, onClick }) => {
       <div className="description">
         <h5>{type}</h5>
         <p>
-          {yearly ? prices[type] * 10 : prices[type]}/{yearly ? "yr" : "mo"}
+          ${yearly ? prices[type] * 10 : prices[type]}/{yearly ? "yr" : "mo"}
         </p>
         <p className={"yearly " + (yearly && "visible")}>2 months free</p>
       </div>

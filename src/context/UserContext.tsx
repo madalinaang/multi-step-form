@@ -8,6 +8,9 @@ interface User {
   phone: string;
   planType: PlanType;
   yearly: boolean;
+  online: boolean;
+  large: boolean;
+  custom: boolean;
 }
 
 export const prices = {
@@ -30,6 +33,9 @@ const initialUser: User = {
   phone: "",
   planType: "arcade",
   yearly: false,
+  online: false,
+  large: false,
+  custom: false,
 };
 
 const UserContext = createContext<UserContextType>({
